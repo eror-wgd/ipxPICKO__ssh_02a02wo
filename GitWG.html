@@ -1,0 +1,430 @@
+ <!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title> 🌄 𝗣𝗶𝗰𝗸𝗼 𝗪𝗚 𝗴𝗲𝗻𝗲𝗿𝗮𝘁𝗼𝗿 𝗰𝘆𝗯𝗲𝗿𝗽𝘂𝗻𝗸 𝗽𝗮𝗻𝗲𝗹 </title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(circle at top left, #0a0f1c, #05060a 70%);
+      color: #e0f7ff;
+      overflow: hidden;
+    }
+
+    /* پس‌زمینه متحرک */
+    .bg-layers {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(60% 60% at 20% 30%, rgba(0,255,255,0.15), transparent),
+                  radial-gradient(40% 40% at 80% 70%, rgba(255,0,200,0.1), transparent);
+    }
+
+    canvas#stars {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .card {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 24px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 255, 255, 0.15);
+      box-shadow: 0 0 40px rgba(0, 229, 255, 0.12);
+    }
+
+    h2 {
+      text-align: center;
+      color: #00e5ff;
+      text-shadow: 0 0 10px #00e5ff, 0 0 20px #ff00c8;
+    }
+
+    label { display: block; margin-top: 12px; font-weight: bold; }
+
+    select, input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 10px;
+      border: none;
+      font-size: 14px;
+      color: #e0f7ff;
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(6px);
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.4);
+    }
+
+    button {
+      cursor: pointer;
+      font-weight: bold;
+      background: linear-gradient(90deg, #00e5ff, #ff00c8);
+      color: #fff;
+      box-shadow: 0 0 15px rgba(0,229,255,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(0,229,255,0.8);
+    }
+
+    pre {
+      background: rgba(0,0,0,0.6);
+      color: #00ffea;
+      padding: 16px;
+      border-radius: 10px;
+      margin-top: 20px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  <div class="bg-layers"></div>
+
+  <div class="card">
+    <h2>⚡  𝗣𝗶𝗰𝗸𝗼 𝗪𝗴 𝗴𝗲𝗻𝗲𝗿𝗮𝘁𝗼𝗿 𝗰𝘆𝗯𝗲𝗿𝗽𝘂𝗻𝗸 𝗽𝗮𝗻𝗲𝗹⚡</h2>
+
+    <!-- انتخاب کشور -->
+    <label for="country">Select country:</label>
+    <select id="country">
+      <option value="">-- انتخاب کنید --</option>
+       <option value="5.160|2a00:94c1:abcd">🇮🇷 ایران [Iran]     『🅿🆁🅾』</option>
+  <option value="80.128|2001:608:1a2b">🇩🇪 آلمان [Germany]     『🅿🆁🅾』</option>
+  <option value="3.45|2600:1405:7b9c">🇺🇸 آمریکا [United States]     『🅿🆁🅾』</option>
+  <option value="145.12|2a03:4001:5d6e">🇳🇱 هلند [Netherlands]     『🅿🆁🅾』</option>
+  <option value="39.50|2400:f001:1234">🇵🇰 پاکستان [Pakistan]     『🅿🆁🅾』</option>
+  <option value="94.200|2a02:fd41:beef">🇦🇪 امارات [UAE]     『🅿🆁🅾』</option>
+  <option value="37.224|2a05:3201:cafe">🇸🇦 عربستان [Saudi Arabia]     『🅿🆁🅾』</option>
+  <option value="37.236|2a02:fc01:1b2c">🇮🇶 عراق [Iraq]     『🅿🆁🅾』</option>
+  <option value="37.240|2a02:aa20:abcd">🇧🇭 بحرین [Bahrain]     『🅿🆁🅾』</option>
+  <option value="82.178|2a02:bb30:1234">🇴🇲 عمان [Oman]     『🅿🆁🅾』</option>
+  <option value="41.32|2a02:ee20:5566">🇪🇬 مصر [Egypt]     『🅿🆁🅾』</option>
+  <option value="78.100|2a02:cc30:7788">🇶🇦 قطر [Qatar]     『🅿🆁🅾』</option>
+  <option value="78.160|2a02:ff01:3344">🇹🇷 ترکیه [Turkey]     『🅿🆁🅾』</option>
+  <option value="151.38|2a02:d481:7788">🇮🇹 ایتالیا [Italy]     『🅿🆁🅾』</option>
+  <option value="24.48|2607:f8b1:99aa">🇨🇦 کانادا [Canada]     『🅿🆁🅾』</option>
+  <option value="84.208|2a03:b001:55cc">🇳🇴 نروژ [Norway]     『🅿🆁🅾』</option>
+  <option value="85.224|2a00:c801:77dd">🇸🇪 سوئد [Sweden]     『🅿🆁🅾』</option>
+            <option value="3.0|2001:4">🇺🇸 آمریکا [United States]</option>
+  <option value="5.56|2001:df0">🇩🇪 آلمان [Germany]</option>
+  <option value="5.48|2a01:e0a">🇫🇷 فرانسه [France]</option>
+  <option value="1.33|2404:7a80">🇯🇵 ژاپن [Japan]</option>
+  <option value="1.224|2406:3000">🇰🇷 کره‌جنوبی [South Korea]</option>
+  <option value="51.140|2a00:23c7">🇬🇧 بریتانیا [United Kingdom]</option>
+  <option value="24.114|2607:fea8">🇨🇦 کانادا [Canada]</option>
+  <option value="1.120|2400:7a80">🇦🇺 استرالیا [Australia]</option>
+  <option value="49.32|2405:201">🇮🇳 هند [India]</option>
+  <option value="45.224|2804:14d0">🇧🇷 برزیل [Brazil]</option>
+  <option value="5.160|2a06:5880">🇮🇷 ایران [Iran]</option>
+  <option value="102.135|2403:abcd">🇳🇬 نیجریه [Nigeria]</option>
+  <option value="186.0|2800:800">🇲🇽 مکزیک [Mexico]</option>
+  <option value="2.16|2a02:a00">🇮🇹 ایتالیا [Italy]</option>
+  <option value="37.112|2a02:2f0">🇪🇸 اسپانیا [Spain]</option>
+  <option value="88.228|2a02:ff0">🇹🇷 ترکیه [Turkey]</option>
+  <option value="41.41|2c0f:fc00">🇪🇬 مصر [Egypt]</option>
+  <option value="103.4|2400:adc0">🇵🇰 پاکستان [Pakistan]</option>
+  <option value="89.64|2a02:2788">🇵🇱 لهستان [Poland]</option>
+  <option value="82.76|2a02:2f8">🇷🇴 رومانی [Romania]</option>
+  <option value="91.192|2a00:1e8">🇺🇦 اوکراین [Ukraine]</option>
+  <option value="105.0|2c0f:fe00">🇿🇦 آفریقای جنوبی [South Africa]</option>
+  <option value="112.198|2406:300">🇵🇭 فیلیپین [Philippines]</option>
+  <option value="119.42|2405:4800">🇹🇭 تایلند [Thailand]</option>
+  <option value="171.224|2402:800">🇻🇳 ویتنام [Vietnam]</option>
+  <option value="36.66|2401:2c00">🇮🇩 اندونزی [Indonesia]</option>
+  <option value="175.136|2401:3c00">🇲🇾 مالزی [Malaysia]</option>
+  <option value="91.144|2a03:5c0">🇷🇺 روسیه [Russia]</option>
+  <option value="5.112|2a03:4400">🇨🇭 سوئیس [Switzerland]</option>
+  <option value="213.75|2a00:1ca0">🇳🇱 هلند [Netherlands]</option>
+  <option value="79.136|2a02:168">🇸🇪 سوئد [Sweden]</option>
+  <option value="84.208|2a00:801">🇳🇴 نروژ [Norway]</option>
+  <option value="84.248|2a02:2808">🇫🇮 فنلاند [Finland]</option>
+  <option value="62.197|2a02:168">🇨🇿 چک [Czech Republic]</option>
+  <option value="92.249|2a02:120">🇭🇺 مجارستان [Hungary]</option>
+  <option value="95.34|2a02:586">🇬🇷 یونان [Greece]</option>
+  <option value="91.199|2a02:ed0">🇮🇱 اسرائیل [Israel]</option>
+  <option value="37.151|2a03:6f0">🇰🇼 کویت [Kuwait]</option>
+  <option value="185.1|2a02:30">🇶🇦 قطر [Qatar]</option>
+  <option value="94.200|2a02:5e0">🇸🇦 عربستان [Saudi Arabia]</option>
+  <option value="185.32|2a03:2880">🇦🇪 امارات [UAE]</option>
+  <option value="27.116|2400:7c00">🇸🇬 سنگاپور [Singapore]</option>
+  <option value="188.44|2a0c:980">🇱🇧 لبنان [Lebanon]</option>
+  <option value="31.9|2a02:ccc">🇮🇶 عراق [Iraq]</option>
+  <option value="176.192|2a0a:400">🇸🇾 سوریه [Syria]</option>
+  <option value="212.5|2a02:404">🇦🇷 آرژانتین [Argentina]</option>
+  <option value="190.83|2801:1f0">🇨🇴 کلمبیا [Colombia]</option>
+  <option value="179.60|2801:14">🇨🇱 شیلی [Chile]</option>
+  <option value="95.58|2a09:880">🇰🇿 قزاقستان [Kazakhstan]</option>
+    </select>
+
+    <!-- انتخاب DNS نسخه چهارم -->
+    <label for="dns4">Select Service🛡️:</label>
+    <select id="dns4">
+
+   <option value="78.157.32.202">𝑺𝒉𝒆𝒍𝒕𝒆𝒓 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="78.157.32.205">𝑺𝒉𝒆𝒍𝒕𝒆𝒓 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+      <option value="114.114.114.114">114𝑫𝒏𝒔 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="114.114.115.115">114𝑫𝒏𝒔 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="223.5.5.5">𝑨𝒍𝒊 𝑫𝒏𝒔 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="223.6.6.6">𝑨𝒍𝒊 𝑫𝒏𝒔 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="101.226.4.6">𝑫𝒏𝒔 𝑺𝒑𝒂𝒊 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="218.30.118.6">𝑫𝒏𝒔 𝑺𝒑𝒂𝒊 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="119.29.29.29">𝑫𝒏𝒔𝑷𝒐𝒅 𝒑𝒖𝒃𝒍𝒊𝒄𝑫𝒏𝒔+ ᴘʀɪᴍᴀʀʏ</option>
+    <option value="119.28.28.28">𝑫𝒏𝒔𝑷𝒐𝒅 𝒑𝒖𝒃𝒍𝒊𝒄𝑫𝒏𝒔+ sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="216.146.35.35">𝑫𝒚𝒏 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="216.146.36.36">𝑫𝒚𝒏 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="156.154.70.1">𝑵𝒆𝒖𝒔𝒕𝒂𝒓 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="156.154.71.1">𝑵𝒆𝒖𝒔𝒕𝒂𝒓 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="199.85.126.10">𝑵𝒐𝒓𝒕𝒐𝒏 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="199.85.127.10">𝑵𝒐𝒓𝒕𝒐𝒏 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+       <option value="8.8.8.8"> 𝑮𝒐𝒐𝒈𝒍𝒆 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="8.8.4.4"> 𝑮𝒐𝒐𝒈𝒍𝒆 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="8.8.8.8, dns.google, google.com"> 𝑮𝒐𝒐𝒈𝒍𝒆 ᵖʳᵒ ᴘʀɪᴍᴀʀʏ</option>
+    <option value="8.8.4.4, dns.google, google.com"> 𝑮𝒐𝒐𝒈𝒍𝒆 ᵖʳᵒsᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="1.1.1.1"> 𝑪𝒍𝒐𝒖𝒅𝒇𝒍𝒂𝒓𝒆 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="1.0.0.1"> 𝑪𝒍𝒐𝒖𝒅𝒇𝒍𝒂𝒓𝒆 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="1.1.1.1, cloudflare-dns.com, cloudflare.com"> 𝑪𝒍𝒐𝒖𝒅𝒇𝒍𝒂𝒓𝒆 ᵖʳᵒ ᴘʀɪᴍᴀʀʏ</option>
+    <option value="1.0.0.1, cloudflare-dns.com, cloudflare.com"> 𝑪𝒍𝒐𝒖𝒅𝒇𝒍𝒂𝒓𝒆 ᵖʳᵒ sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="9.9.9.9"> 𝑸𝒖𝒂𝒅9 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="149.112.112.112"> 𝑸𝒖𝒂𝒅9 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="9.9.9.9, dns.quad9.net, quad9.net"> 𝑸𝒖𝒂𝒅9 ᵖʳᵒ ᴘʀɪᴍᴀʀʏ</option>
+    <option value="149.112.112.112, dns.quad9.net, quad9.net"> 𝑸𝒖𝒂𝒅9ᵖʳᵒsᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="208.67.222.222"> 𝑶𝒑𝒆𝒏 𝑫𝒏𝒔 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="208.67.220.220"> 𝑶𝒑𝒆𝒏 𝑫𝒏𝒔 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="208.67.222.222, doh.opendns.com, opendns.com"> 𝑶𝒑𝒆𝒏 𝑫𝒏𝒔 ᵖʳᵒ ᴘʀɪᴍᴀʀʏ</option>
+    <option value="208.67.220.220, doh.opendns.com, opendns.com"> 𝑶𝒑𝒆𝒏 𝑫𝒏𝒔 ᵖʳᵒ sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="94.140.14.14"> 𝑨𝒅 𝑮𝒖𝒂𝒓𝒅 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="94.140.15.15"> 𝑨𝒅 𝑮𝒖𝒂𝒓𝒅 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="94.140.14.14, dns.adguard-dns.com, adguard.com"> 𝑨𝒅 𝑮𝒖𝒂𝒓𝒅 ᵖʳᵒᴘʀɪᴍᴀʀʏ</option>
+    <option value="94.140.15.15, dns.adguard-dns.com, adguard.com"> 𝑨𝒅 𝑮𝒖𝒂𝒓𝒅 ᵖʳᵒ sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="78.157.42.100"> 𝑬𝒍𝒆𝒄𝒕𝒓𝒐 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="78.157.42.101"> 𝑬𝒍𝒆𝒄𝒕𝒓𝒐 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="78.157.42.100, electrotm.org"> 𝑬𝒍𝒆𝒄𝒕𝒓𝒐 ᵖʳᵒ ᴘʀɪᴍᴀʀʏ</option>
+    <option value="78.157.42.101, electrotm.org"> 𝑬𝒍𝒆𝒄𝒕𝒓𝒐 ᵖʳᵒ sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="10.202.10.10"> 𝑹𝒂𝒅𝒂𝒓 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="10.202.10.11"> 𝑹𝒂𝒅𝒂𝒓 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="10.202.10.10, radar.local"> 𝑹𝒂𝒅𝒂𝒓 ᵖʳᵒᴘʀɪᴍᴀʀʏ</option>
+    <option value="10.202.10.11, radar.local"> 𝑹𝒂𝒅𝒂𝒓 ᵖʳᵒsᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="77.88.8.8"> 𝒀𝒂𝒏𝒅𝒆𝒙 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="77.88.8.1"> 𝒀𝒂𝒏𝒅𝒆𝒙 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="84.200.69.80"> 𝑫𝒏𝒔 𝑾𝒂𝒕𝒄𝒉 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="84.200.70.40"> 𝑫𝒏𝒔 𝑾𝒂𝒕𝒄𝒉 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="178.22.122.100"> 𝑺𝒉𝒆𝒄𝒂𝒏 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="185.51.200.2"> 𝑺𝒉𝒆𝒄𝒂𝒏 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+   <option value="185.55.226.26"> 𝑩𝒆𝒈𝒛𝒂𝒓 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="185.55.225.25"> 𝑩𝒆𝒈𝒛𝒂𝒓 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+
+   <option value="209.244.0.3"> 𝑳𝒆𝒗𝒆𝒍3 ᴘʀɪᴍᴀʀʏ</option>
+    <option value="209.244.0.4"> 𝑳𝒆𝒗𝒆𝒍3 sᴇᴄᴏɴᴅᴀʀʏ</option>
+
+    <option value="4.2.2.1"> 𝑳𝒆𝒗𝒆𝒍3 ᴄʟᴀsɪᴄ『1』</option>
+    <option value="4.2.2.2"> 𝑳𝒆𝒗𝒆𝒍3 ᴄʟᴀsɪᴄ『2』</option>
+    <option value="4.2.2.3"> 𝑳𝒆𝒗𝒆𝒍3 ᴄʟᴀsɪᴄ『3』</option>
+    <option value="4.2.2.4"> 𝑳𝒆𝒗𝒆𝒍3 ᴄʟᴀsɪᴄ『4』</option>
+    <option value="4.2.2.5"> 𝑳𝒆𝒗𝒆𝒍3 ᴄʟᴀsɪᴄ『5』</option>
+    <option value="4.2.2.6"> 𝑳𝒆𝒗𝒆𝒍3 ᴄʟᴀsɪᴄ『6』</option>
+    </select>
+
+    <!-- نام فایل کانفیگ -->
+    <label for="confName">file Name:</label>
+    <input type="text" id="confName" placeholder="مثال: myvpn">
+
+    <!-- دکمه‌ها -->
+    <button onclick="generateConfig()">✨ Create</button>
+    <button onclick="downloadConfig()">⬇ Download</button>
+    <button onclick="clearConfig()">🗑 Clear</button>
+
+    <!-- نمایش خروجی -->
+    <label>Config Text:</label>
+    <pre id="output"></pre>
+  </div>
+
+  <script>
+    let currentConfig = "";
+
+    function randomInRange(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function generateValidBase64Key() {
+      const array = new Uint8Array(32);
+      crypto.getRandomValues(array);
+      let s = '';
+      for (let i = 0; i < array.length; i++) s += String.fromCharCode(array[i]);
+      return btoa(s);
+    }
+
+    function generateConfig() {
+      const value = document.getElementById("country").value;
+      if (!value) {
+        document.getElementById("output").innerText = "لطفا کشور را انتخاب کنید.";
+        return;
+      }
+
+      const [ipv4Prefix, ipv6Prefix] = value.split("|");
+
+      const part1 = Math.floor(Math.random() * 255);
+      const part2 = Math.floor(Math.random() * 255);
+      const part3 = Math.floor(Math.random() * 255);
+      const part4 = Math.floor(Math.random() * 255);
+      const part5 = Math.floor(Math.random() * 255);
+      const part6 = Math.floor(Math.random() * 255);
+      const part11 = Math.floor(Math.random() * 255);
+
+      const part7 = randomInRange(1000, 9999).toString(16);
+      const part8 = randomInRange(1000, 9999).toString(16);
+      const part9 = randomInRange(1000, 9999).toString(16);
+      const part10 = randomInRange(1000, 9999).toString(16);
+
+      const T2 = `${ipv6Prefix}::${part7}:${part8}`;
+      const dns61 = `${T2}:${randomInRange(1000, 9999).toString(16)}:fe`;
+      const dns62 = `${T2}:${randomInRange(1000, 9999).toString(16)}:fe`;
+
+      const addressV4 = `${ipv4Prefix}.${part1}.${part2}/14`;
+      const addressV6 = `${ipv6Prefix}:${part9}:${part10}:${part11}::/96`;
+      const dns41 = `${ipv4Prefix}.${part3}.${part4}`;
+      const endpoint = `${ipv4Prefix}.${part5}.${part6}`;
+      const allowed1 = `${ipv4Prefix}.0.0/18`;
+      const aloowed2 = `${ipv6Prefix}::/96`;
+      const mtu = randomInRange(1420, 1440);
+      const port = randomInRange(2087, 2088);
+      const dns4_selected = document.getElementById("dns4").value;
+      const privateKey = generateValidBase64Key();
+      const publicKey = generateValidBase64Key();
+      const publicKey2 = generateValidBase64Key();
+      const publicKey3 = generateValidBase64Key();
+      const publicKey4 = generateValidBase64Key();
+      const preSharedKey = generateValidBase64Key();
+      const seekV4 = `aQewq.ipvPicko-${part1}-${part2}-${part3}-${part4}-${part5}-${part6}.QcPk`;
+      const seekV6 = `pk.Qweg-${part11}-${part7}-${part8}-${part9}-${part10}.cqwQd.Picko`;
+
+      currentConfig = `[Interface]
+PrivateKey = ${privateKey}
+Address = ${addressV4}, ${addressV6}
+MTU = ${mtu}
+ListenPort = ${port}
+DNS = ${dns4_selected}, ${dns41}, ${dns61}, ${dns62}
+DNS = ${seekV4}, ${seekV6}
+[Peer]
+PublicKey = ${publicKey}
+PreSharedKey = ${preSharedKey}
+Endpoint = ${endpoint}:${port}
+   PersistentKeepalive = 11
+  [Peer]
+   PublicKey = ${publicKey2}
+   PreSharedKey = ${preSharedKey}
+   Endpoint = ${endpoint}:${port}
+   PersistentKeepalive = 13
+   AllowedIPs = ${allowed1}
+  [Peer]
+   PublicKey = ${publicKey3}
+   PreSharedKey = ${preSharedKey}
+   Endpoint = ${endpoint}:${port}
+   PersistentKeepalive = 15
+   AllowedIPs = ${aloowed2}
+  [Peer]
+   PublicKey = ${publicKey4}
+   PreSharedKey = ${preSharedKey}
+   Endpoint = ${endpoint}:${port}
+   PersistentKeepalive = 19
+    `;
+
+      document.getElementById("output").innerText = currentConfig;
+    }
+
+    function downloadConfig() {
+      if (!currentConfig) {
+        alert("ابتدا کانفیگ بسازید.");
+        return;
+      }
+      let name = document.getElementById("confName").value.trim();
+      if (!name) name = "config";
+      const blob = new Blob([currentConfig], { type: "conf/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${name}.conf`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function clearConfig() {
+      currentConfig = "";
+      document.getElementById("output").innerText = "";
+    }
+
+    /* افکت ستاره‌ها */
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let W, H, stars = [];
+
+    function resize() {
+      W = canvas.width = innerWidth;
+      H = canvas.height = innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function makeStars() {
+      stars = [];
+      for (let i = 0; i < 120; i++) {
+        stars.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          r: Math.random() * 1.5 + 0.5,
+          d: Math.random() * 0.5
+        });
+      }
+    }
+    makeStars();
+
+    function drawStars() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#0ff";
+      for (let s of stars) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+        s.y += s.d;
+        if (s.y > H) { s.y = 0; s.x = Math.random() * W; }
+      }
+      requestAnimationFrame(drawStars);
+    }
+    drawStars();
+  </script>
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ‌        
